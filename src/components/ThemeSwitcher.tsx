@@ -15,6 +15,9 @@ function ThemeSwitcher() {
   }, []) //[] agar hanya dijalankan sekali saat komponen pertama kali dirender
 
 
+  //useEffect tanpa dependency array akan dijalankan setiap kali komponen dirender, 
+  //sehingga setiap kali state theme berubah, efek ini akan dijalankan dan 
+  //memperbarui kelas pada body serta menyimpan preferensi tema ke localStorage.
   useEffect(() => {
     
     if (theme) {
@@ -22,7 +25,7 @@ function ThemeSwitcher() {
       localStorage.setItem("theme", "dark-mode");
     } else {
         localStorage.setItem("theme", '');
-      document.body.classList.remove('dark-mode');
+        document.body.classList.remove('dark-mode');
     }
   })
   return (
